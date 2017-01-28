@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+<h:head>
+	<title>Data Table</title>
+	<h:outputStylesheet library="css" name="bootstrap.css" />
+</h:head>
+<h:body>
+	<div style="margin-top: 70px;" class="container">
+		<h2>Product DataTable</h2>
+		<h:form>
+			<h:dataTable class="table" value="#{productBean.products}"
+				var="product">
+				<h:column>
+					<f:facet name="header">Name</f:facet>
+					<h:inputText value="#{product.name}" rendered="#{product.edit}" />
+					<h:outputText value="#{product.name}"
+						rendered="#{not product.edit}"></h:outputText>
+				</h:column>
+				<h:column>
+					<f:facet name="header">ProductId</f:facet>
+					<h:inputText value="#{product.productId}"
+						rendered="#{product.edit}" />
+					<h:outputText value="#{product.productId}"
+						rendered="#{not product.edit}"></h:outputText>
+				</h:column>
+				<h:column>
+					<f:facet name="header">Price</f:facet>
+					<h:inputText value="#{product.price}" rendered="#{product.edit}" />
+					<h:outputText value="#{product.price}"
+						rendered="#{not product.edit}"></h:outputText>
+				</h:column>
+				<h:column>
+					<f:facet name="header">Edit/Save</f:facet>
+					<h:commandButton class="btn btn-warning" value="Edit"
+						action="#{productBean.editProduct(product)}"
+						rendered="#{not product.edit}">
+					</h:commandButton>
+					<h:commandButton class="btn btn-success" value="Save"
+						action="#{productBean.saveProducts}" rendered="#{product.edit}">
+					</h:commandButton>
+				</h:column>
+				<h:column>
+					<f:facet name="header">Delete</f:facet>
+					<h:commandButton class="btn btn-danger" value="Delete"
+						action="#{productBean.deleteProduct(product)}">
+					</h:commandButton>
+				</h:column>
+			</h:dataTable>
+			<h:commandButton class="btn btn-success" value="Add New Product"
+				action="addProduct" />
+		</h:form>
+	</div>
+</h:body>
+</html>

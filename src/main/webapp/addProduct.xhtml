@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+	<title>Add Product in Data Table</title>
+
+	<h:outputStylesheet library="css" name="bootstrap.css" />
+</h:head>
+<h:body>
+	<div style="margin-top: 70px;" class="container">
+		<h:form>
+			<div class="form-group">
+				<p class="retroshd">Enter Product Id</p>
+				<h:inputText class="form-control" value="#{productBean.productId}" />
+			</div>
+			<div class="form-group">
+				<p class="retroshd">Enter Product Name</p>
+				<h:inputText class="form-control" value="#{productBean.name}" />
+			</div>
+			<div class="form-group">
+				<p class="retroshd">Enter Product Price</p>
+				<h:inputText class="form-control" value="#{productBean.price}" />
+			</div>
+			<h:commandButton class="btn btn-info" value="add Product"
+				action="#{productBean.addProduct}" />
+		</h:form>
+	</div>
+</h:body>
+</html>
